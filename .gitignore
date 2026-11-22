@@ -1,0 +1,11 @@
+# 编辑器 / 系统垃圾
+.DS_Store
+*.swp
+*.swo
+*~
+
+# 安装备份（正常情况下在 ~/.dotfiles-backup，不在仓库内）
+.dotfiles-backup/
+
+# 私有覆盖配置：命名为 *.local 的文件不会被跟踪
+*.local

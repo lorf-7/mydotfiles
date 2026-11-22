@@ -1,0 +1,6 @@
+ble-sabbrev g=git 
+ble-sabbrev el='eza -lh'
+ble-sabbrev gs='git status'
+
+# --- 多终端历史共享：一个窗口敲过的命令，另一个窗口按 ↑ 就能翻到 ---
+bleopt history_share=1
