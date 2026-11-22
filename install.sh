@@ -80,15 +80,23 @@ for pkg in "${PACKAGES[@]}"; do
     fi
     run mkdir -p "$(dirname -- "$dest")"
     run ln -s -- "$src" "$dest"
-    printf '    链接 %s\n' "$dest"
+    if ((DRY_RUN == 0)); then
+      printf '    链接 %s\n' "$dest"
+    fi
     linked=$((linked + 1))
   done < <(find "$pkg_dir" -type f -print0 | sort -z)
 done
 
-printf '\n完成: 新建 %d 个链接，跳过 %d 个，备份 %d 个。\n' "$linked" "$skipped" "$backed_up"
+if ((DRY_RUN)); then
+  printf '\n[dry-run] 将新建 %d 个链接，跳过 %d 个，将备份 %d 个。\n' "$linked" "$skipped" "$backed_up"
+else
+  printf '\n完成: 新建 %d 个链接，跳过 %d 个，备份 %d 个。\n' "$linked" "$skipped" "$backed_up"
+fi
 if ((backed_up > 0)); then
-  printf '原文件已备份到: %s\n' "$BACKUP_DIR"
-  if ((DRY_RUN == 0)); then
+  if ((DRY_RUN)); then
+    printf '[dry-run] 将备份原文件到: %s\n' "$BACKUP_DIR"
+  else
+    printf '原文件已备份到: %s\n' "$BACKUP_DIR"
     printf '回滚时把备份文件移回原位置，并删除对应符号链接即可。\n'
   fi
 fi
