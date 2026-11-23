@@ -54,7 +54,7 @@ exec bash -l             # 重新加载 shell 配置
 
 ## 没有纳入的东西
 
-- `~/.config/nvim`：它本身是独立的 git 仓库（LazyVim starter），单独管理，避免嵌套仓库。
+- `~/.config/nvim`：独立的 [nvimfiles](https://github.com/lorf-7/nvimfiles) 仓库（基于 LazyVim starter），单独管理，避免嵌套仓库。
 - `~/.zshrc`：目前为空，未启用 zsh。
 - 隐私与机器相关文件：`.ssh/`、`.gnupg/`、`.bash_history`、`.local/`、各类 token/device 文件、应用缓存。
 - `htop`/`btop`/`neofetch` 等会自动重写的生成型配置：暂不跟踪，避免噪声提交。
